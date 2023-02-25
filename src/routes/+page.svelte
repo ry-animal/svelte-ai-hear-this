@@ -3,58 +3,31 @@
 	import Header from '$lib/Header.svelte';
 	import LoadingIndicator from '../lib/Loading.svelte';
 	const categoryTypes = [
-		'Action',
-		'Adventure',
-		'Animation',
-		'Biography',
-		'Comedy',
-		'Crime',
-		'Documentary',
-		'Drama',
-		'Family',
-		'Fantasy',
-		'Film-Noir',
-		'History',
-		'Horror',
-		'Musical',
-		'Mystery',
-		'Romance',
-		'Sci-Fi',
-		'Sport',
-		'Thriller',
-		'War',
-		'Western',
-		'Art-house',
-		'Black-Comedy',
-		'Chick-flick',
-		'Cult-classic',
-		'Dark-Comedy',
-		'Epic',
-		'Erotic',
-		'Experimental',
-		'Fairy-tale',
-		'Film-within-a-film',
-		'Futuristic',
-		'Gangster',
-		'Heist',
-		'Historical',
-		'Holiday',
+		'Pop',
+		'Rock',
+		'Country',
+		'Hip hop',
+		'R&B',
+		'Jazz',
+		'Blues',
+		'Classical',
+		'Electronic',
+		'Dance',
+		'Folk',
+		'Reggae',
+		'Funk',
+		'Heavy metal',
+		'Punk',
 		'Indie',
-		'Juvenile',
-		'Melodrama',
-		'Monster',
-		'Political',
-		'Psychological',
-		'Road-movie',
-		'Satire',
-		'Science-Fiction',
-		'Slapstick',
-		'Social-issue',
-		'Superhero',
-		'Surreal',
-		'Teen',
-		'Vampire',
-		'Zombie'
+		'World music',
+		'Latin',
+		'Soul',
+		'Gospel',
+		'New Age',
+		'Ambient',
+		'Experimental',
+		'Soundtrack',
+		'Acoustic'
 	];
 	let loading = false;
 	let error = '';
@@ -86,7 +59,7 @@
 	/**
 	 * @type {string}
 	 */
-	let cinemaType = 'tv show';
+	let cinemaType = 'music';
 	/**
 	 * @type {Array<string>}
 	 */
@@ -153,22 +126,19 @@
 <div>
 	<Header />
 	<div class="text-center font-extrabold text-black text-3xl md:text-5xl mb-10">
-		Get curated show or movie recommendations with Open AI
+		Get curated music recommendations with Open AI
 	</div>
 	<div class="mb-8">
-		<div class="mb-4 font-semibold">What kind of cinema are you searching for?</div>
+		<div class="mb-4 font-semibold">What kind of music are you searching for?</div>
 		<div>
 			<select class="p-2 rounded-md border text-gray-600 w-full text-sm" bind:value={cinemaType}>
-				<option value="tv show"> TV Show </option>
-				<option value="movie"> Movie </option>
-				<option value="tv show or movie"> No Preference </option>
+				<option value="music"> Music </option>
+				<option value="music"> No Preference </option>
 			</select>
 		</div>
 	</div>
 	<div>
-		<div class="mb-4 font-semibold">
-			Select all categories that you want the show or movie to include.
-		</div>
+		<div class="mb-4 font-semibold">Select all categories that you want the music to include.</div>
 		<div class="flex items-center flex-wrap">
 			{#each categoryTypes as category}
 				<label class="mr-2 mb-2">
@@ -190,7 +160,7 @@
 		<textarea
 			bind:value={specificDescriptors}
 			class="p-2 rounded-md border text-gray-600 w-full h-20 text-sm"
-			placeholder="Ex. Must have at least 2 seasons and be on Netflix or Hulu."
+			placeholder="Ex. Must have been released in 2012 and their first album."
 		/>
 		<button
 			on:click={search}
